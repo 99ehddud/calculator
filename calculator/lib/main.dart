@@ -19,6 +19,8 @@ class _CalculatorState extends State<Calculator> {
   int firstResult = 0;
   int secondResult = 0;
 
+  String signNow = "";
+
   @override
   Widget build(BuildContext context) {
     final double deviceWidth = MediaQuery.of(context).size.width;
@@ -28,6 +30,7 @@ class _CalculatorState extends State<Calculator> {
     final double displayDivHeight = deviceHeight * 0.3;
     final double displayTopPadding = displayDivHeight * 0.7;
     final double textFieldHeight = displayDivHeight * 0.3;
+    final double textFontSize = displayDivHeight * 0.3;
     final double buttonDivHeight = deviceHeight * 0.4;
     final double buttonVerticalMargin = deviceHeight * 0.2 / 6;
     final double buttonHeight = buttonDivHeight / 5;
@@ -42,12 +45,17 @@ class _CalculatorState extends State<Calculator> {
               width: deviceWidth,
               child: Padding(
                 padding: EdgeInsets.only(
-                    top: displayTopPadding, right: buttonHorizontalMargin, left: buttonHorizontalMargin),
+                    top: displayTopPadding,
+                    right: buttonHorizontalMargin,
+                    left: buttonHorizontalMargin),
                 child: Text(
                   current.toString(),
                   textAlign: TextAlign.right,
-                  style:
-                      TextStyle(fontSize: textFieldHeight, color: Colors.white),
+                  style: TextStyle(
+                    fontSize: textFontSize,
+                    color: Colors.white,
+                    backgroundColor: Colors.black,
+                  ),
                 ),
               ),
             ),
@@ -57,7 +65,7 @@ class _CalculatorState extends State<Calculator> {
               children: [
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => _inputSign("C"),
                   style: ButtonStyle(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: MaterialStateProperty.all(
@@ -68,7 +76,7 @@ class _CalculatorState extends State<Calculator> {
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => _inputSign(""),
                   style: ButtonStyle(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: MaterialStateProperty.all(
@@ -79,7 +87,7 @@ class _CalculatorState extends State<Calculator> {
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => _inputSign("%"),
                   style: ButtonStyle(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: MaterialStateProperty.all(
@@ -90,7 +98,7 @@ class _CalculatorState extends State<Calculator> {
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => _deleteNumber(),
                   style: ButtonStyle(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: MaterialStateProperty.all(
@@ -141,7 +149,7 @@ class _CalculatorState extends State<Calculator> {
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => _inputSign("÷"),
                   style: ButtonStyle(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: MaterialStateProperty.all(
@@ -192,7 +200,7 @@ class _CalculatorState extends State<Calculator> {
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => _inputSign("x"),
                   style: ButtonStyle(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: MaterialStateProperty.all(
@@ -243,7 +251,7 @@ class _CalculatorState extends State<Calculator> {
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => _inputSign("-"),
                   style: ButtonStyle(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: MaterialStateProperty.all(
@@ -261,7 +269,7 @@ class _CalculatorState extends State<Calculator> {
               children: [
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => _inputNumber(0),
                   style: ButtonStyle(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: MaterialStateProperty.all(
@@ -272,7 +280,7 @@ class _CalculatorState extends State<Calculator> {
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => _inputSign("."),
                   style: ButtonStyle(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: MaterialStateProperty.all(
@@ -283,7 +291,7 @@ class _CalculatorState extends State<Calculator> {
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => _inputSign("="),
                   style: ButtonStyle(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: MaterialStateProperty.all(
@@ -294,7 +302,7 @@ class _CalculatorState extends State<Calculator> {
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => _inputSign("+"),
                   style: ButtonStyle(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: MaterialStateProperty.all(
@@ -315,16 +323,80 @@ class _CalculatorState extends State<Calculator> {
 
   void _inputNumber(int number) {
     setState(() {
+      if (current.toString().length > 7) {
+
+      }
       current = current * 10 + number;
-      print(current);
     });
   }
 
   void _inputSign(String sign) {
-    setState(() {});
+    setState(() {
+      switch (sign) {
+        case "C" :
+          current = 0;
+          firstResult = 0;
+          secondResult = 0;
+          break;
+
+        case "" :
+
+
+        case "%" :
+
+
+        case "÷" :
+          firstResult = current;
+          current = 0;
+          signNow = "÷";
+          break;
+
+        case "x" :
+          firstResult = current;
+          current = 0;
+          signNow = "x";
+          break;
+
+        case "-" :
+          firstResult = current;
+          current = 0;
+          signNow = "-";
+          break;
+
+        case "+" :
+          firstResult = current;
+          current = 0;
+          signNow = "+";
+          break;
+
+        case "=" :
+          secondResult = current;
+
+          switch (signNow) {
+            case "÷" :
+              current = firstResult ~/ secondResult;
+              break;
+
+            case "x" :
+              current = firstResult * secondResult;
+              break;
+
+            case "-" :
+              current = firstResult - secondResult;
+              break;
+
+            case "+" :
+              current = firstResult + secondResult;
+              break;
+          }
+
+      }
+    });
   }
 
   void _deleteNumber() {
-    setState(() {});
+    setState(() {
+      current = current ~/ 10;
+    });
   }
 }
