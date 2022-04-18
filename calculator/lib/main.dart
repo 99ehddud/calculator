@@ -23,16 +23,19 @@ class _CalculatorState extends State<Calculator> {
 
   @override
   Widget build(BuildContext context) {
+    // Modify Width & Height
+
     final double deviceWidth = MediaQuery.of(context).size.width;
     final double deviceHeight = MediaQuery.of(context).size.height;
+    final double deviceWidthHeightRate = deviceHeight / deviceWidth;
     final double buttonHorizontalMargin = deviceWidth * 0.2 / 5;
     final double buttonWidth = deviceWidth * 0.8 / 4;
     final double displayDivHeight = deviceHeight * 0.3;
     final double displayTopPadding = displayDivHeight * 0.7;
     final double textFieldHeight = displayDivHeight * 0.3;
     final double textFontSize = displayDivHeight * 0.3;
-    final double buttonDivHeight = deviceHeight * 0.4;
-    final double buttonVerticalMargin = deviceHeight * 0.2 / 6;
+    final double buttonDivHeight = deviceHeight * 0.45;
+    final double buttonVerticalMargin = deviceHeight * 0.2 / 5;
     final double buttonHeight = buttonDivHeight / 5;
 
     return Scaffold(
@@ -54,7 +57,6 @@ class _CalculatorState extends State<Calculator> {
                   style: TextStyle(
                     fontSize: textFontSize,
                     color: Colors.white,
-                    backgroundColor: Colors.black,
                   ),
                 ),
               ),
@@ -314,7 +316,7 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
               ],
             ),
-            SizedBox(height: deviceHeight * 0.1),
+            SizedBox(height: deviceHeight * 0.05),
           ],
         ),
       ),
