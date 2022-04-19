@@ -35,6 +35,7 @@ class _CalculatorState extends State<Calculator> {
     final double textFieldHeight = displayDivHeight * 0.3;
     final double textFontSize = displayDivHeight * 0.3;
     final double buttonDivHeight = deviceHeight * 0.45;
+    final double buttonTextFontSize = buttonDivHeight / 9;
     final double buttonVerticalMargin = deviceHeight * 0.2 / 5;
     final double buttonHeight = buttonDivHeight / 5;
 
@@ -74,7 +75,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("C"),
+                  child: Text(
+                    "C",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -85,7 +91,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text(""),
+                  child: Text(
+                    "",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -96,7 +107,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("%"),
+                  child: Text(
+                    "%",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -107,7 +123,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("→"),
+                  child: Text(
+                    "→",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
               ],
@@ -125,7 +146,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("7"),
+                  child: Text(
+                    "7",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -136,7 +162,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("8"),
+                  child: Text(
+                    "8",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -147,7 +178,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("9"),
+                  child: Text(
+                    "9",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -158,7 +194,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("÷"),
+                  child: Text(
+                    "÷",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
               ],
@@ -176,7 +217,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("4"),
+                  child: Text(
+                    "4",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -187,7 +233,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("5"),
+                  child: Text(
+                    "5",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -198,7 +249,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("6"),
+                  child: Text(
+                    "6",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -209,7 +265,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("x"),
+                  child: Text(
+                    "x",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
               ],
@@ -227,7 +288,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("1"),
+                  child: Text(
+                    "1",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -238,7 +304,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("2"),
+                  child: Text(
+                    "2",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -249,7 +320,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("3"),
+                  child: Text(
+                    "3",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -260,7 +336,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("-"),
+                  child: Text(
+                    "-",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
               ],
@@ -278,7 +359,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("0"),
+                  child: Text(
+                    "0",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -289,7 +375,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("."),
+                  child: Text(
+                    ".",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -300,7 +391,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("="),
+                  child: Text(
+                    "=",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
@@ -311,7 +407,12 @@ class _CalculatorState extends State<Calculator> {
                       Size(buttonWidth, buttonHeight),
                     ),
                   ),
-                  child: const Text("+"),
+                  child: Text(
+                    "+",
+                    style: TextStyle(
+                      fontSize: buttonTextFontSize,
+                    ),
+                  ),
                 ),
                 SizedBox(width: buttonHorizontalMargin),
               ],
@@ -325,9 +426,7 @@ class _CalculatorState extends State<Calculator> {
 
   void _inputNumber(int number) {
     setState(() {
-      if (current.toString().length > 7) {
-
-      }
+      if (current.toString().length > 7) {}
       current = current * 10 + number;
     });
   }
@@ -335,63 +434,60 @@ class _CalculatorState extends State<Calculator> {
   void _inputSign(String sign) {
     setState(() {
       switch (sign) {
-        case "C" :
+        case "C":
           current = 0;
           firstResult = 0;
           secondResult = 0;
           break;
 
-        case "" :
+        case "":
 
+        case "%":
 
-        case "%" :
-
-
-        case "÷" :
+        case "÷":
           firstResult = current;
           current = 0;
           signNow = "÷";
           break;
 
-        case "x" :
+        case "x":
           firstResult = current;
           current = 0;
           signNow = "x";
           break;
 
-        case "-" :
+        case "-":
           firstResult = current;
           current = 0;
           signNow = "-";
           break;
 
-        case "+" :
+        case "+":
           firstResult = current;
           current = 0;
           signNow = "+";
           break;
 
-        case "=" :
+        case "=":
           secondResult = current;
 
           switch (signNow) {
-            case "÷" :
+            case "÷":
               current = firstResult ~/ secondResult;
               break;
 
-            case "x" :
+            case "x":
               current = firstResult * secondResult;
               break;
 
-            case "-" :
+            case "-":
               current = firstResult - secondResult;
               break;
 
-            case "+" :
+            case "+":
               current = firstResult + secondResult;
               break;
           }
-
       }
     });
   }
