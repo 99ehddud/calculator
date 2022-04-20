@@ -69,11 +69,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputSign("C"),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "C",
@@ -85,11 +84,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputSign(""),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "",
@@ -101,11 +99,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputSign("%"),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "%",
@@ -117,11 +114,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _deleteNumber(),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "→",
@@ -140,11 +136,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputNumber(7),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "7",
@@ -156,11 +151,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputNumber(8),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "8",
@@ -172,11 +166,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputNumber(9),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "9",
@@ -188,11 +181,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputSign("÷"),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "÷",
@@ -211,11 +203,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputNumber(4),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "4",
@@ -227,11 +218,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputNumber(5),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "5",
@@ -243,11 +233,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputNumber(6),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "6",
@@ -259,11 +248,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputSign("x"),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "x",
@@ -282,11 +270,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputNumber(1),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "1",
@@ -298,11 +285,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputNumber(2),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "2",
@@ -314,11 +300,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputNumber(3),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "3",
@@ -330,11 +315,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputSign("-"),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "-",
@@ -353,11 +337,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputNumber(0),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "0",
@@ -369,11 +352,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputSign("."),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     ".",
@@ -385,11 +367,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputSign("="),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "=",
@@ -401,11 +382,10 @@ class _CalculatorState extends State<Calculator> {
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
                   onPressed: () => _inputSign("+"),
-                  style: ButtonStyle(
+                  style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    fixedSize: MaterialStateProperty.all(
-                      Size(buttonWidth, buttonHeight),
-                    ),
+                    fixedSize: Size(buttonWidth, buttonHeight),
+                    shape: const CircleBorder(),
                   ),
                   child: Text(
                     "+",
