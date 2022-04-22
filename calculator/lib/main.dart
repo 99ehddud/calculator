@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(const MaterialApp(
@@ -15,11 +16,17 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  int current = 0;
-  int firstResult = 0;
-  int secondResult = 0;
+  int _count = 1;
 
-  String signNow = "";
+  double _current = 0.0;
+  double _firstResult = 0.0;
+  double _secondResult = 0.0;
+  double _savedResult = 0.0;
+
+  String _signNow = "";
+
+  bool _isSaved = false;
+  bool _isPointClicked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +60,10 @@ class _CalculatorState extends State<Calculator> {
                     right: buttonHorizontalMargin,
                     left: buttonHorizontalMargin),
                 child: Text(
-                  current.toString(),
+                  (_current.toInt() < _current &&
+                          _current < _current.toInt() + 1)
+                      ? _current.toString()
+                      : _current.toInt().toString(),
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     fontSize: textFontSize,
@@ -83,14 +93,14 @@ class _CalculatorState extends State<Calculator> {
                 ),
                 SizedBox(width: buttonHorizontalMargin),
                 ElevatedButton(
-                  onPressed: () => _inputSign(""),
+                  onPressed: () => _inputSign("S"),
                   style: ElevatedButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
                   ),
                   child: Text(
-                    "",
+                    "S",
                     style: TextStyle(
                       fontSize: buttonTextFontSize,
                     ),
@@ -406,8 +416,12 @@ class _CalculatorState extends State<Calculator> {
 
   void _inputNumber(int number) {
     setState(() {
-      if (current.toString().length > 7) {}
-      current = current * 10 + number;
+      if (!_isSaved) {
+        _current = _current * 10 + number;
+      } else {
+        _current = _current + number / pow(10, _count);
+        _count++;
+      }
     });
   }
 
@@ -415,66 +429,96 @@ class _CalculatorState extends State<Calculator> {
     setState(() {
       switch (sign) {
         case "C":
-          current = 0;
-          firstResult = 0;
-          secondResult = 0;
+          _current = 0;
+          _firstResult = 0;
+          _secondResult = 0;
+          _isSaved = false;
           break;
 
-        case "":
+        case "S":
+          if (!_isSaved) {
+            _savedResult = _current;
+            _current = 0;
+            _isSaved = true;
+          } else {
+            _current = _savedResult;
+            _isSaved = false;
+          }
+          _isSaved = false;
+          break;
 
         case "%":
+          // Should Modify "_current"'s type
+          // int to double
+          _current = _current / 100;
+          _isSaved = false;
+          break;
 
         case "÷":
-          firstResult = current;
-          current = 0;
-          signNow = "÷";
+          _firstResult = _current;
+          _current = 0;
+          _signNow = "÷";
+          _isSaved = false;
           break;
 
         case "x":
-          firstResult = current;
-          current = 0;
-          signNow = "x";
+          _firstResult = _current;
+          _current = 0;
+          _signNow = "x";
+          _isSaved = false;
           break;
 
         case "-":
-          firstResult = current;
-          current = 0;
-          signNow = "-";
+          _firstResult = _current;
+          _current = 0;
+          _signNow = "-";
+          _isSaved = false;
           break;
 
         case "+":
-          firstResult = current;
-          current = 0;
-          signNow = "+";
+          _firstResult = _current;
+          _current = 0;
+          _signNow = "+";
+          _isSaved = false;
+          break;
+
+        case ".":
+          if (!_isSaved) {
+            _isSaved = true;
+          } else {
+            _isSaved = false;
+          }
           break;
 
         case "=":
-          secondResult = current;
+          _secondResult = _current;
 
-          switch (signNow) {
+          switch (_signNow) {
             case "÷":
-              current = firstResult ~/ secondResult;
+              _current = _firstResult / _secondResult;
               break;
 
             case "x":
-              current = firstResult * secondResult;
+              _current = _firstResult * _secondResult;
               break;
 
             case "-":
-              current = firstResult - secondResult;
+              _current = _firstResult - _secondResult;
               break;
 
             case "+":
-              current = firstResult + secondResult;
+              _current = _firstResult + _secondResult;
               break;
           }
+
+          _isSaved = false;
       }
     });
   }
 
   void _deleteNumber() {
     setState(() {
-      current = current ~/ 10;
+      _current = _current / 10;
     });
   }
 }
