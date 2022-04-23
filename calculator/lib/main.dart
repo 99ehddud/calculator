@@ -366,6 +366,8 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    // primary: _isPointClicked ? Colors.white : Colors.yellow,
+                    // If "." button is clicked, change background color to check
                   ),
                   child: Text(
                     ".",
@@ -416,7 +418,7 @@ class _CalculatorState extends State<Calculator> {
 
   void _inputNumber(int number) {
     setState(() {
-      if (!_isSaved) {
+      if (!_isPointClicked) {
         _current = _current * 10 + number;
       } else {
         _current = _current + number / pow(10, _count);
@@ -432,7 +434,8 @@ class _CalculatorState extends State<Calculator> {
           _current = 0;
           _firstResult = 0;
           _secondResult = 0;
-          _isSaved = false;
+          _isPointClicked = false;
+          _count = 1;
           break;
 
         case "S":
@@ -444,50 +447,57 @@ class _CalculatorState extends State<Calculator> {
             _current = _savedResult;
             _isSaved = false;
           }
-          _isSaved = false;
+          _isPointClicked = false;
+          _count = 1;
           break;
 
         case "%":
           // Should Modify "_current"'s type
           // int to double
           _current = _current / 100;
-          _isSaved = false;
+          _isPointClicked = false;
+          _count = 1;
           break;
 
         case "÷":
           _firstResult = _current;
           _current = 0;
           _signNow = "÷";
-          _isSaved = false;
+          _isPointClicked = false;
+          _count = 1;
           break;
 
         case "x":
           _firstResult = _current;
           _current = 0;
           _signNow = "x";
-          _isSaved = false;
+          _isPointClicked = false;
+          _count = 1;
           break;
 
         case "-":
           _firstResult = _current;
           _current = 0;
           _signNow = "-";
-          _isSaved = false;
+          _isPointClicked = false;
+          _count = 1;
           break;
 
         case "+":
           _firstResult = _current;
           _current = 0;
           _signNow = "+";
-          _isSaved = false;
+          _isPointClicked = false;
+          _count = 1;
           break;
 
         case ".":
-          if (!_isSaved) {
-            _isSaved = true;
+          if (!_isPointClicked) {
+            _isPointClicked = true;
           } else {
-            _isSaved = false;
+            _isPointClicked = false;
           }
+          _count = 1;
           break;
 
         case "=":
@@ -511,7 +521,8 @@ class _CalculatorState extends State<Calculator> {
               break;
           }
 
-          _isSaved = false;
+          _isPointClicked = false;
+          _count = 1;
       }
     });
   }
