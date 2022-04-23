@@ -83,11 +83,13 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(253, 150, 14, 1),
                   ),
                   child: Text(
                     "C",
                     style: TextStyle(
                       fontSize: buttonTextFontSize,
+                      color: const Color.fromRGBO(0, 59, 74, 1),
                     ),
                   ),
                 ),
@@ -98,11 +100,13 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(253, 150, 14, 1),
                   ),
                   child: Text(
                     "S",
                     style: TextStyle(
                       fontSize: buttonTextFontSize,
+                      color: const Color.fromRGBO(0, 59, 74, 1),
                     ),
                   ),
                 ),
@@ -113,11 +117,13 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(253, 150, 14, 1),
                   ),
                   child: Text(
                     "%",
                     style: TextStyle(
                       fontSize: buttonTextFontSize,
+                      color: const Color.fromRGBO(0, 59, 74, 1),
                     ),
                   ),
                 ),
@@ -128,11 +134,13 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(253, 150, 14, 1),
                   ),
                   child: Text(
                     "→",
                     style: TextStyle(
                       fontSize: buttonTextFontSize,
+                      color: const Color.fromRGBO(0, 59, 74, 1),
                     ),
                   ),
                 ),
@@ -150,6 +158,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(130, 130, 130, 1),
                   ),
                   child: Text(
                     "7",
@@ -165,6 +174,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(130, 130, 130, 1),
                   ),
                   child: Text(
                     "8",
@@ -180,6 +190,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(130, 130, 130, 1),
                   ),
                   child: Text(
                     "9",
@@ -195,6 +206,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(39, 104, 210, 1),
                   ),
                   child: Text(
                     "÷",
@@ -217,6 +229,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(130, 130, 130, 1),
                   ),
                   child: Text(
                     "4",
@@ -232,6 +245,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(130, 130, 130, 1),
                   ),
                   child: Text(
                     "5",
@@ -247,6 +261,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(130, 130, 130, 1),
                   ),
                   child: Text(
                     "6",
@@ -262,6 +277,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(39, 104, 210, 1),
                   ),
                   child: Text(
                     "x",
@@ -284,6 +300,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(130, 130, 130, 1),
                   ),
                   child: Text(
                     "1",
@@ -299,6 +316,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(130, 130, 130, 1),
                   ),
                   child: Text(
                     "2",
@@ -314,6 +332,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(130, 130, 130, 1),
                   ),
                   child: Text(
                     "3",
@@ -329,6 +348,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(39, 104, 210, 1),
                   ),
                   child: Text(
                     "-",
@@ -351,6 +371,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(130, 130, 130, 1),
                   ),
                   child: Text(
                     "0",
@@ -366,7 +387,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
-                    // primary: _isPointClicked ? Colors.white : Colors.yellow,
+                    primary: _isPointClicked ? Color.fromRGBO(130, 100, 210, 1) : Color.fromRGBO(39, 104, 210, 1),
                     // If "." button is clicked, change background color to check
                   ),
                   child: Text(
@@ -383,6 +404,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(39, 104, 210, 1),
                   ),
                   child: Text(
                     "=",
@@ -398,6 +420,7 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
+                    primary: const Color.fromRGBO(39, 104, 210, 1),
                   ),
                   child: Text(
                     "+",
@@ -421,7 +444,7 @@ class _CalculatorState extends State<Calculator> {
       if (!_isPointClicked) {
         _current = _current * 10 + number;
       } else {
-        _current = _current + number / pow(10, _count);
+        _current = _current + (number / pow(10, _count));
         _count++;
       }
     });
