@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 void main() {
   runApp(const MaterialApp(
@@ -34,12 +33,10 @@ class _CalculatorState extends State<Calculator> {
 
     final double deviceWidth = MediaQuery.of(context).size.width;
     final double deviceHeight = MediaQuery.of(context).size.height;
-    final double deviceWidthHeightRate = deviceHeight / deviceWidth;
     final double buttonHorizontalMargin = deviceWidth * 0.2 / 5;
     final double buttonWidth = deviceWidth * 0.8 / 4;
     final double displayDivHeight = deviceHeight * 0.3;
     final double displayTopPadding = displayDivHeight * 0.7;
-    final double textFieldHeight = displayDivHeight * 0.3;
     final double textFontSize = displayDivHeight * 0.3;
     final double buttonDivHeight = deviceHeight * 0.45;
     final double buttonTextFontSize = buttonDivHeight / 9;
@@ -63,7 +60,9 @@ class _CalculatorState extends State<Calculator> {
                   (_current.toInt() < _current &&
                           _current < _current.toInt() + 1)
                       ? _current.toString()
-                      : _current.toInt().toString(),
+                      : _isPointClicked
+                          ? _current.toString()
+                          : _current.toInt().toString(),
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     fontSize: textFontSize,
@@ -100,7 +99,9 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
-                    primary: const Color.fromRGBO(253, 150, 14, 1),
+                    primary: _isSaved
+                        ? const Color.fromRGBO(150, 100, 150, 1)
+                        : const Color.fromRGBO(253, 150, 14, 1),
                   ),
                   child: Text(
                     "S",
@@ -387,7 +388,9 @@ class _CalculatorState extends State<Calculator> {
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     fixedSize: Size(buttonWidth, buttonHeight),
                     shape: const CircleBorder(),
-                    primary: _isPointClicked ? Color.fromRGBO(130, 100, 210, 1) : Color.fromRGBO(39, 104, 210, 1),
+                    primary: _isPointClicked
+                        ? const Color.fromRGBO(130, 100, 210, 1)
+                        : const Color.fromRGBO(39, 104, 210, 1),
                     // If "." button is clicked, change background color to check
                   ),
                   child: Text(
@@ -441,10 +444,20 @@ class _CalculatorState extends State<Calculator> {
 
   void _inputNumber(int number) {
     setState(() {
+      double _point = 0.0;
       if (!_isPointClicked) {
         _current = _current * 10 + number;
       } else {
-        _current = _current + (number / pow(10, _count));
+        for (int i = 1; i <= _count; i++) {
+          if (i == 1) {
+            _point = 0.1;
+          } else {
+            _point *= 0.1;
+            _point.toStringAsFixed(_count);
+            // Should be modified
+          }
+        }
+        _current = _current + (number * _point); // Should be modified
         _count++;
       }
     });
@@ -517,8 +530,6 @@ class _CalculatorState extends State<Calculator> {
         case ".":
           if (!_isPointClicked) {
             _isPointClicked = true;
-          } else {
-            _isPointClicked = false;
           }
           _count = 1;
           break;
@@ -551,7 +562,7 @@ class _CalculatorState extends State<Calculator> {
   }
 
   void _deleteNumber() {
-    setState(() {
+    setState(() { // Should be modified
       _current = _current / 10;
     });
   }
