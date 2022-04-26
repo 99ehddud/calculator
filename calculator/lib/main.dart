@@ -16,6 +16,8 @@ class Calculator extends StatefulWidget {
 
 class _CalculatorState extends State<Calculator> {
   int _count = 1;
+  int _varForTen = 1;
+  double _numberToDouble = 0.0;
 
   double _current = 0.0;
   double _firstResult = 0.0;
@@ -26,6 +28,7 @@ class _CalculatorState extends State<Calculator> {
 
   bool _isSaved = false;
   bool _isPointClicked = false;
+  bool _isArithmeticError = false;
 
   @override
   Widget build(BuildContext context) {
@@ -57,12 +60,14 @@ class _CalculatorState extends State<Calculator> {
                     right: buttonHorizontalMargin,
                     left: buttonHorizontalMargin),
                 child: Text(
-                  (_current.toInt() < _current &&
-                          _current < _current.toInt() + 1)
-                      ? _current.toString()
-                      : _isPointClicked
+                  _isArithmeticError
+                      ? "Error"
+                      : (_current.toInt() < _current &&
+                              _current < _current.toInt() + 1)
                           ? _current.toString()
-                          : _current.toInt().toString(),
+                          : _isPointClicked
+                              ? _current.toString()
+                              : _current.toInt().toString(),
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     fontSize: textFontSize,
@@ -444,22 +449,21 @@ class _CalculatorState extends State<Calculator> {
 
   void _inputNumber(int number) {
     setState(() {
-      double _point = 0.0;
       if (!_isPointClicked) {
         _current = _current * 10 + number;
       } else {
+        _varForTen = 1;
+        _numberToDouble = number.toDouble();
         for (int i = 1; i <= _count; i++) {
-          if (i == 1) {
-            _point = 0.1;
-          } else {
-            _point *= 0.1;
-            _point.toStringAsFixed(_count);
-            // Should be modified
-          }
+          _varForTen *= 10;
         }
-        _current = _current + (number * _point); // Should be modified
+        _current = _current + (_numberToDouble / _varForTen);
+        _current = (_current * _varForTen).roundToDouble();
+        _current = _current / _varForTen;
         _count++;
       }
+
+      _isArithmeticError = false;
     });
   }
 
@@ -488,8 +492,6 @@ class _CalculatorState extends State<Calculator> {
           break;
 
         case "%":
-          // Should Modify "_current"'s type
-          // int to double
           _current = _current / 100;
           _isPointClicked = false;
           _count = 1;
@@ -539,7 +541,11 @@ class _CalculatorState extends State<Calculator> {
 
           switch (_signNow) {
             case "÷":
-              _current = _firstResult / _secondResult;
+              if (_secondResult != 0) {
+                _current = _firstResult / _secondResult;
+              } else {
+                _isArithmeticError = true;
+              }
               break;
 
             case "x":
@@ -562,7 +568,8 @@ class _CalculatorState extends State<Calculator> {
   }
 
   void _deleteNumber() {
-    setState(() { // Should be modified
+    setState(() {
+      // Should be modified
       _current = _current / 10;
     });
   }
