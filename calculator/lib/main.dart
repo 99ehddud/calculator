@@ -62,12 +62,14 @@ class _CalculatorState extends State<Calculator> {
                 child: Text(
                   _isArithmeticError
                       ? "Error"
-                      : (_current.toInt() < _current &&
-                              _current < _current.toInt() + 1)
-                          ? _current.toString()
-                          : _isPointClicked
+                      : (_current > 999999)
+                          ? "OVER!"
+                          : (_current.toInt() < _current &&
+                                  _current < _current.toInt() + 1)
                               ? _current.toString()
-                              : _current.toInt().toString(),
+                              : _isPointClicked
+                                  ? _current.toString()
+                                  : _current.toInt().toString(),
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     fontSize: textFontSize,
@@ -449,21 +451,22 @@ class _CalculatorState extends State<Calculator> {
 
   void _inputNumber(int number) {
     setState(() {
-      if (!_isPointClicked) {
-        _current = _current * 10 + number;
-      } else {
-        _varForTen = 1;
-        _numberToDouble = number.toDouble();
-        for (int i = 1; i <= _count; i++) {
-          _varForTen *= 10;
+      if (_current.toString().length < 8) {
+        if (!_isPointClicked) {
+          _current = _current * 10 + number;
+        } else {
+          _varForTen = 1;
+          _numberToDouble = number.toDouble();
+          for (int i = 1; i <= _count; i++) {
+            _varForTen *= 10;
+          }
+          _current = _current + (_numberToDouble / _varForTen);
+          _current = (_current * _varForTen).roundToDouble();
+          _current = _current / _varForTen;
+          _count++;
         }
-        _current = _current + (_numberToDouble / _varForTen);
-        _current = (_current * _varForTen).roundToDouble();
-        _current = _current / _varForTen;
-        _count++;
+        _isArithmeticError = false;
       }
-
-      _isArithmeticError = false;
     });
   }
 
@@ -560,7 +563,6 @@ class _CalculatorState extends State<Calculator> {
               _current = _firstResult + _secondResult;
               break;
           }
-
           _isPointClicked = false;
           _count = 1;
       }
