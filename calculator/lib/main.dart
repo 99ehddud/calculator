@@ -15,8 +15,9 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  int _count = 1;
-  int _varForTen = 1;
+  int _countForInput = 1;
+  int _varForTenInput = 1;
+  int _varForTenDelete = 1;
   int _currentToSplitLength = 0;
 
   double _numberToDouble = 0.0;
@@ -459,15 +460,15 @@ class _CalculatorState extends State<Calculator> {
         if (!_isPointClicked) {
           _current = _current * 10 + number;
         } else {
-          _varForTen = 1;
+          _varForTenInput = 1;
           _numberToDouble = number.toDouble();
-          for (int i = 1; i <= _count; i++) {
-            _varForTen *= 10;
+          for (int i = 1; i <= _countForInput; i++) {
+            _varForTenInput *= 10;
           }
-          _current = _current + (_numberToDouble / _varForTen);
-          _current = (_current * _varForTen).roundToDouble();
-          _current = _current / _varForTen;
-          _count++;
+          _current = _current + (_numberToDouble / _varForTenInput);
+          _current = (_current * _varForTenInput).roundToDouble();
+          _current = _current / _varForTenInput;
+          _countForInput++;
         }
         _isArithmeticError = false;
 
@@ -569,15 +570,29 @@ class _CalculatorState extends State<Calculator> {
       }
 
       _currentToSplitLength = 0;
-      _count = 1;
+      _countForInput = 1;
       _isOver = false;
     });
   }
 
   void _deleteNumber() {
+    int tmp = 0;
+
     setState(() {
-      // Should be modified
-      _current = _current / 10;
+      if (!_isPointClicked) {
+        tmp = (_current / 10).floor();
+        _current = tmp.toDouble();
+      } else {
+        _varForTenDelete = 1;
+        _currentToSplit = _current.toString().split('.');
+        for (int i = 1; i <= _currentToSplit[1].length - 1; i++) {
+          _varForTenDelete *= 10;
+        }
+        _current = ((_current * _varForTenDelete).floorToDouble()) / _varForTenDelete;
+      }
+
+      // Should be modified!!
+      // if _current is '0.0', make _isOver false
     });
   }
 }
