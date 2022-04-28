@@ -17,8 +17,9 @@ class Calculator extends StatefulWidget {
 class _CalculatorState extends State<Calculator> {
   int _count = 1;
   int _varForTen = 1;
-  double _numberToDouble = 0.0;
+  int _currentToSplitLength = 0;
 
+  double _numberToDouble = 0.0;
   double _current = 0.0;
   double _firstResult = 0.0;
   double _secondResult = 0.0;
@@ -29,6 +30,9 @@ class _CalculatorState extends State<Calculator> {
   bool _isSaved = false;
   bool _isPointClicked = false;
   bool _isArithmeticError = false;
+  bool _isOver = false;
+
+  List<String> _currentToSplit = [];
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +66,7 @@ class _CalculatorState extends State<Calculator> {
                 child: Text(
                   _isArithmeticError
                       ? "Error"
-                      : (_current > 999999)
+                      : (_isOver || _currentToSplitLength >= 8)
                           ? "OVER!"
                           : (_current.toInt() < _current &&
                                   _current < _current.toInt() + 1)
@@ -451,7 +455,7 @@ class _CalculatorState extends State<Calculator> {
 
   void _inputNumber(int number) {
     setState(() {
-      if (_current.toString().length < 8) {
+      if (!_isOver && _currentToSplitLength < 7) {
         if (!_isPointClicked) {
           _current = _current * 10 + number;
         } else {
@@ -466,6 +470,12 @@ class _CalculatorState extends State<Calculator> {
           _count++;
         }
         _isArithmeticError = false;
+
+        _currentToSplit = _current.toString().split('.');
+        _currentToSplitLength = _currentToSplit[0].length + _currentToSplit[1].length;
+        if (_currentToSplitLength >= 8) {
+          _isOver = true;
+        }
       }
     });
   }
@@ -478,7 +488,6 @@ class _CalculatorState extends State<Calculator> {
           _firstResult = 0;
           _secondResult = 0;
           _isPointClicked = false;
-          _count = 1;
           break;
 
         case "S":
@@ -491,13 +500,11 @@ class _CalculatorState extends State<Calculator> {
             _isSaved = false;
           }
           _isPointClicked = false;
-          _count = 1;
           break;
 
         case "%":
           _current = _current / 100;
           _isPointClicked = false;
-          _count = 1;
           break;
 
         case "÷":
@@ -505,7 +512,6 @@ class _CalculatorState extends State<Calculator> {
           _current = 0;
           _signNow = "÷";
           _isPointClicked = false;
-          _count = 1;
           break;
 
         case "x":
@@ -513,7 +519,6 @@ class _CalculatorState extends State<Calculator> {
           _current = 0;
           _signNow = "x";
           _isPointClicked = false;
-          _count = 1;
           break;
 
         case "-":
@@ -521,7 +526,6 @@ class _CalculatorState extends State<Calculator> {
           _current = 0;
           _signNow = "-";
           _isPointClicked = false;
-          _count = 1;
           break;
 
         case "+":
@@ -529,14 +533,12 @@ class _CalculatorState extends State<Calculator> {
           _current = 0;
           _signNow = "+";
           _isPointClicked = false;
-          _count = 1;
           break;
 
         case ".":
           if (!_isPointClicked) {
             _isPointClicked = true;
           }
-          _count = 1;
           break;
 
         case "=":
@@ -564,8 +566,11 @@ class _CalculatorState extends State<Calculator> {
               break;
           }
           _isPointClicked = false;
-          _count = 1;
       }
+
+      _currentToSplitLength = 0;
+      _count = 1;
+      _isOver = false;
     });
   }
 
