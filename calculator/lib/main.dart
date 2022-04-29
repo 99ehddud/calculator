@@ -65,6 +65,7 @@ class _CalculatorState extends State<Calculator> {
                     right: buttonHorizontalMargin,
                     left: buttonHorizontalMargin),
                 child: Text(
+                  // Should be modified
                   _isArithmeticError
                       ? "Error"
                       : (_isOver || _currentToSplitLength >= 8)
@@ -456,7 +457,10 @@ class _CalculatorState extends State<Calculator> {
 
   void _inputNumber(int number) {
     setState(() {
-      if (!_isOver && _currentToSplitLength < 7) {
+      _currentToSplit = _current.toString().split('.');
+      _currentToSplitLength = _currentToSplit[0].length + _currentToSplit[1].length;
+
+      if (_currentToSplitLength <= 7) {
         if (!_isPointClicked) {
           _current = _current * 10 + number;
         } else {
@@ -466,8 +470,7 @@ class _CalculatorState extends State<Calculator> {
             _varForTenInput *= 10;
           }
           _current = _current + (_numberToDouble / _varForTenInput);
-          _current = (_current * _varForTenInput).roundToDouble();
-          _current = _current / _varForTenInput;
+          _current = ((_current * _varForTenInput).roundToDouble()) / _varForTenInput;
           _countForInput++;
         }
         _isArithmeticError = false;
@@ -589,10 +592,18 @@ class _CalculatorState extends State<Calculator> {
           _varForTenDelete *= 10;
         }
         _current = ((_current * _varForTenDelete).floorToDouble()) / _varForTenDelete;
-      }
 
-      // Should be modified!!
-      // if _current is '0.0', make _isOver false
+        _countForInput--;
+
+        _currentToSplit = _current.toString().split('.');
+        if (_currentToSplit[1] == '0') {
+          _isPointClicked = false;
+        }
+      }
     });
   }
 }
+
+// When _currentToSplitLength is over 8,
+// Input : make not user can input
+// '=' : display 'Over!'
