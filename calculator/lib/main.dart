@@ -603,7 +603,3 @@ class _CalculatorState extends State<Calculator> {
     });
   }
 }
-
-// When _currentToSplitLength is over 8,
-// Input : make not user can input
-// '=' : display 'Over!'
