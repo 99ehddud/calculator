@@ -68,7 +68,7 @@ class _CalculatorState extends State<Calculator> {
                   // Should be modified
                   _isArithmeticError
                       ? "Error"
-                      : (_isOver || _currentToSplitLength >= 8)
+                      : (_isOver)
                           ? "OVER!"
                           : (_current.toInt() < _current &&
                                   _current < _current.toInt() + 1)
@@ -455,12 +455,20 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
+  void _calculateCurrentToSplitLength() {
+    _currentToSplit = _current.toString().split('.');
+    _currentToSplitLength = _currentToSplit[0].length + _currentToSplit[1].length;
+  }
+
   void _inputNumber(int number) {
     setState(() {
-      _currentToSplit = _current.toString().split('.');
-      _currentToSplitLength = _currentToSplit[0].length + _currentToSplit[1].length;
+      if (_isOver) {
+        _isOver = false;
+      }
 
-      if (_currentToSplitLength <= 7) {
+      _calculateCurrentToSplitLength();
+
+      if (_currentToSplitLength <= 6) {
         if (!_isPointClicked) {
           _current = _current * 10 + number;
         } else {
@@ -474,12 +482,6 @@ class _CalculatorState extends State<Calculator> {
           _countForInput++;
         }
         _isArithmeticError = false;
-
-        _currentToSplit = _current.toString().split('.');
-        _currentToSplitLength = _currentToSplit[0].length + _currentToSplit[1].length;
-        if (_currentToSplitLength >= 8) {
-          _isOver = true;
-        }
       }
     });
   }
@@ -492,6 +494,7 @@ class _CalculatorState extends State<Calculator> {
           _firstResult = 0;
           _secondResult = 0;
           _isPointClicked = false;
+          _isOver = false;
           break;
 
         case "S":
@@ -540,8 +543,10 @@ class _CalculatorState extends State<Calculator> {
           break;
 
         case ".":
-          if (!_isPointClicked) {
-            _isPointClicked = true;
+          if (!_isOver) {
+            if (!_isPointClicked) {
+              _isPointClicked = true;
+            }
           }
           break;
 
@@ -574,7 +579,6 @@ class _CalculatorState extends State<Calculator> {
 
       _currentToSplitLength = 0;
       _countForInput = 1;
-      _isOver = false;
     });
   }
 
@@ -603,3 +607,7 @@ class _CalculatorState extends State<Calculator> {
     });
   }
 }
+
+// When _currentToSplitLength is over 8,
+// Input : make not user can input
+// '=' : display 'Over!'
