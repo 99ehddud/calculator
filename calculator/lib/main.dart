@@ -69,7 +69,7 @@ class _CalculatorState extends State<Calculator> {
                   _isArithmeticError
                       ? "Error"
                       : (_isOver)
-                          ? "OVER!"
+                          ? "over"
                           : (_current.toInt() < _current &&
                                   _current < _current.toInt() + 1)
                               ? _current.toString()
@@ -543,10 +543,12 @@ class _CalculatorState extends State<Calculator> {
           break;
 
         case ".":
-          if (!_isOver) {
-            if (!_isPointClicked) {
-              _isPointClicked = true;
-            }
+          if (_isOver) {
+            _isOver = false;
+            _current = 0;
+          }
+          if (!_isPointClicked) {
+            _isPointClicked = true;
           }
           break;
 
@@ -575,6 +577,12 @@ class _CalculatorState extends State<Calculator> {
               break;
           }
           _isPointClicked = false;
+      }
+
+      _calculateCurrentToSplitLength();
+      if (_currentToSplitLength >= 8) {
+        _isOver = true;
+        _current = 0;
       }
 
       _currentToSplitLength = 0;
@@ -607,7 +615,3 @@ class _CalculatorState extends State<Calculator> {
     });
   }
 }
-
-// When _currentToSplitLength is over 8,
-// Input : make not user can input
-// '=' : display 'Over!'
